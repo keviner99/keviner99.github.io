@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Message } from '../message.model';
 import { ContactService } from 'src/app/contacts/contact.service';
-import { ThisReceiver } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-message-item',

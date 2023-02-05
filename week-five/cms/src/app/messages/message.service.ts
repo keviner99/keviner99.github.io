@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Message } from './message.model';
 import { MOCKMESSAGES } from './MOCKMESSAGES';
 
@@ -6,6 +6,8 @@ import { MOCKMESSAGES } from './MOCKMESSAGES';
   providedIn: 'root'
 })
 export class MessageService {
+
+  messageChangedEvent = new EventEmitter<Message[]>();
 
   private messages: Message[] = [];
 
@@ -23,5 +25,6 @@ export class MessageService {
 
   addMessage(message: Message) {
     this.messages.push(message);
+    this.messageChangedEvent.emit(this.messages.slice());
   }
 }

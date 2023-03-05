@@ -10,7 +10,7 @@ export class MessageService {
 
   messageChangedEvent = new EventEmitter<Message[]>();
   
-  private messagesUrl = 'https://my-first-project-f9113-default-rtdb.firebaseio.com/messsages.json';
+  private messagesUrl = 'https://my-first-project-f9113-default-rtdb.firebaseio.com/messages.json';
   private messages: Message[] = [];
   private maxMessageId: number;
 
@@ -51,9 +51,6 @@ export class MessageService {
   }
 
   //CRUD
-  getMessage(id: string): Message {
-    return this.messages.find((m) => m.id === id);
-  }
 
   addMessage(newMessage: Message) {
     if (newMessage === null || newMessage === undefined) return;
@@ -61,6 +58,10 @@ export class MessageService {
     newMessage.id = `${this.maxMessageId}`;
     this.messages.push(newMessage);
     this.storeMessages();
+  }
+
+  getMessage(id: string): Message {
+    return this.messages.find((m) => m.id === id);
   }
 
   getMaxId(): number {
